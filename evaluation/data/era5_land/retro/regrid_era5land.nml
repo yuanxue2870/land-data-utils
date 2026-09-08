@@ -1,0 +1,10 @@
+&regrid_era5_nml
+ destination_locs=4718592
+ weight_locs=6539504
+ destination_lons=3072
+ destination_lats=1536
+ fv3_grid="retro"
+ source_path="/scratch4/NCEPDEV/stmp/Yuan.Xue/era5_land/orig/"
+ weights_filename="/scratch4/NCEPDEV/stmp/Yuan.Xue/era5_land/sorc/weights/ERA5land-retro_bilinear_wts.nc"
+ destination_path="/scratch4/NCEPDEV/stmp/Yuan.Xue/era5_land/output/"
+/

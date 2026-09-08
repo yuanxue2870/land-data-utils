@@ -1,0 +1,10 @@
+&regrid_era5_nml
+ destination_locs=1179648
+ weight_locs=1686556
+ destination_lons=1536
+ destination_lats=768
+ fv3_grid="prototype"
+ source_path="/scratch4/NCEPDEV/stmp/Yuan.Xue/era5_land/orig/"
+ weights_filename="/scratch4/NCEPDEV/land/data/evaluation/ERA5_land/weights/ERA5-land-prototype_bilinear_wts.nc"
+ destination_path="/scratch4/NCEPDEV/stmp/Yuan.Xue/era5_land/output/"
+/
