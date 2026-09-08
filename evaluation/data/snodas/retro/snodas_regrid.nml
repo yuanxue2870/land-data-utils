@@ -1,0 +1,7 @@
+&snodas_regrid_nml
+ fv3_grid="retro"
+ land_vegsoil_filename="/scratch4/NCEPDEV/stmp/Yuan.Xue/snodas/retro/retro_vegsoil.nc"
+ snodas_mapping_filename="/scratch4/NCEPDEV/stmp/Yuan.Xue/snodas/sorc/gaussian_mapping/snodas1km_retro_mapping.nc"
+ snodas_filepath="/scratch4/NCEPDEV/stmp/Yuan.Xue/snodas/orig/"
+ regrid_outpath="/scratch4/NCEPDEV/stmp/Yuan.Xue/snodas/output/"
+/

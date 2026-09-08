@@ -1,0 +1,11 @@
+&fv3_mapping_nml
+ tile_dim=1152
+ otype="C1152.mx025_oro_data"
+ orog_path="/scratch4/NCEPDEV/land/data/fix/20240917/C1152"
+ tile_path="/scratch4/NCEPDEV/land/data/fix/20240917/C1152"
+ obs_source="snodas1km"
+ source_i_size=8192
+ source_j_size=4096
+ snodas_filename="/scratch3/NCEPDEV/land/Youlong.Xia/SNODAS/orig/SNODAS_unmasked_20250101.nc"
+ out_path="/scratch4/NCEPDEV/stmp/Yuan.Xue/snodas/sorc/fv3_mapping/index_files"
+/

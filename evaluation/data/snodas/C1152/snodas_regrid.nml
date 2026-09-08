@@ -1,0 +1,8 @@
+&snodas_regrid_nml
+ obs_source="SNODAS"
+ fv3_grid="C1152"
+ land_static_filename="/scratch4/NCEPDEV/land/data/ufs-land-driver/vector_inputs/C1152.mx025/ufs-land_C1152.mx025_static_fields.nc"
+ snodas_regrid_filename="/scratch4/NCEPDEV/stmp/Yuan.Xue/snodas/sorc/land_mapping/snodas1km_to_land_mapping.C1152.nc"
+ snodas_filepath="/scratch4/NCEPDEV/stmp/Yuan.Xue/snodas/orig/"
+ regrid_outpath="/scratch4/NCEPDEV/stmp/Yuan.Xue/snodas/output/"
+/
