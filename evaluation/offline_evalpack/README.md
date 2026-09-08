@@ -101,6 +101,8 @@ Comprehensive snow depth evaluation against observations.
 
 ### `Evaluate_scf.m`
 Comprehensive snow cover fraction (SCF) evaluation against observations.
+**Note**:
+- This requires pre-processed IMS files at desired target grids. For now, at line 24, it is set at Yuan Xue's personal directory for C1152 only. Users need to preprocess IMS and re-configure this line when use a different IMS period/grid.
 
 **Inputs**:
 - Model output and observation data files
