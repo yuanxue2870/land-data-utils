@@ -1,0 +1,8 @@
+&regrid_era5_nml
+ destination_locs=272699
+ weight_locs=1090796
+ fv3_grid="C384"
+ source_path="/scratch4/NCEPDEV/stmp/Yuan.Xue/era5/orig/"
+ weights_filename="/scratch4/NCEPDEV/land/data/ufs-land-driver/weights/C384.mx025/ERA5-C384.mx025_hr3_bilinear_wts.nc"
+ destination_path="/scratch4/NCEPDEV/stmp/Yuan.Xue/era5/output/"
+/
