@@ -37,43 +37,9 @@ offline_evalpack/
 
 Edit `config_inputs.m` to set up your evaluation:
 
-```matlab
-%% Grid Configuration
-res = 1152;              % Tile/model grid resolution (384, 768, or 1152)
-ocn_res = 'mx025';       % Ocean grid resolution (currently only mx025 supported)
-
-%% Data Paths
-directory = '/path/to/your/offline/workflow/output/';
-
-%% Time Period
-start_date = datenum(2024, 11, 1);    % Start date (YYYY, MM, DD)
-finish_date = datenum(2025, 2, 1);    % End date (YYYY, MM, DD)
-
-%% Evaluation Settings
-eval_output_step = 1;                          % Daily evaluation output
-eval_exp_names = {'ol'; 'ori'; 'rejectA'};   % Baseline experiment first
-threshold_num_days = 30;                       % Min samples for statistics
-
-%% Diagnostic Analysis Settings
-diag_output_step = 0.25;                       % 6-hourly analysis
-diag_source = {'snocvr_snomad'};              % Observation data source
-region_of_interest = 'US_plus_Nordic';        % Spatial domain
-
-%% Increment Analysis Settings
-incr_exp_names = {'ori'; 'rejectA'; 'rejectB'};  % Experiments to compare
-```
-
-**Key Configuration Notes:**
-- **Baseline experiment**: First entry in `eval_exp_names` is treated as the reference/baseline
-- **Grid resolution**: Must be one of `[384, 768, 1152]`
-- **Time format**: Use MATLAB `datenum()` (days since Jan 1, 0000)
-- **Output step**: Specify in days (0.25 = 6 hours, 1 = daily)
-- **Observation sources**: Options include `'ims_snow'`, `'snocvr_snomad'`, `'sfcsno'`
-- **Regions**: `'ND'`, `'US'`, `'CONUS'`, `'US_plus_Nordic'`
-
 ### Step 2: Run Analysis Scripts
 
-Each script can be run independently or via the job scheduler:
+Each script can be run independently and/or via the job scheduler:
 
 #### Batch Mode (via SLURM scheduler)
 
@@ -93,12 +59,6 @@ sbatch run_matlab.j
 
 ### `config_inputs.m`
 Central configuration file containing all user-adjustable parameters. This file is sourced by all analysis scripts to ensure consistency across the workflow.
-
-**Key outputs**: Defines variables used by all other scripts
-- `res`, `ocn_res`: Grid resolutions
-- `directory`: Workflow output directory
-- `start_date`, `finish_date`: Evaluation time range
-- `exp_names`, `eval_exp_names`: Experiment identifiers
 
 ### `Analyze_diag.m`
 Analyzes JEDI diagnostic files containing observation-minus-forecast (O-F) statistics.
