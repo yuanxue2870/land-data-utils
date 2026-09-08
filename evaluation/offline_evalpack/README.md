@@ -31,7 +31,7 @@ offline_evalpack/
 - **MATLAB R2019a or later** (for compatibility with mapping toolbox and modern syntax)
 - **MATLAB Mapping Toolbox** (required for map visualizations and shapefile I/O)
 - **NetCDF files** from offline land DA workflow (diagnostic and increment files)
-- **Land fraction mask files** (pre-computed .mat files with grid information)
+- **Land fraction mask files** (pre-computed .mat files with grid information, currently can be accessed from Yuan Xue's folder)
 
 ### Step 1: Configure Input Parameters
 
@@ -74,15 +74,6 @@ incr_exp_names = {'ori'; 'rejectA'; 'rejectB'};  % Experiments to compare
 ### Step 2: Run Analysis Scripts
 
 Each script can be run independently or via the job scheduler:
-
-#### Interactive Mode (single experiment)
-
-```matlab
-% In MATLAB command window:
-run('Analyze_diag.m')
-run('Analyze_incr.m')
-run('Evaluate_snow_depth.m')
-```
 
 #### Batch Mode (via SLURM scheduler)
 
@@ -136,11 +127,6 @@ Analyzes data assimilation increments and creates animated comparisons.
 - `snodl_increment_comparison_{roi}.gif`: Animated increment comparison across experiments
 - Console plots with min/max increment markers
 
-**Key functions**:
-- Tile-based processing (e.g., 14 tiles for C1152 resolution)
-- Regional cropping and visualization
-- Blue-to-Red colormap (symmetric around zero)
-
 ### `Evaluate_snow_depth.m`
 Comprehensive snow depth evaluation against observations.
 
@@ -180,157 +166,11 @@ To use: Edit the `matlab` command lines to uncomment desired scripts, then run:
 sbatch run_matlab.j
 ```
 
-## Expected Output Structure
-
-```
-offline_evalpack/
-├── Images_diag_analysis/
-│   ├── avg_diag_snocvr_snomad_ori.jpg
-│   ├── avg_diag_snocvr_snomad_rejectA.jpg
-│   ├── station_counts_timeseries_snocvr_snomad_ori.jpg
-│   ├── station_counts_timeseries_snocvr_snomad_rejectA.jpg
-│   └── ...
-├── snodl_increment_comparison_US_plus_Nordic.gif
-├── evaluation_results/
-│   └── [evaluation metrics and plots]
-└── config_inputs.m
-```
-
-## Data Requirements
-
-### Offline Workflow Directory Structure
-
-The evaluation scripts expect output from your offline DA workflow organized as:
-
-```
-{directory}/
-├── ol/
-│   ├── DA/jedi_anl/
-│   │   ├── diag_*.nc
-│   │   └── *.snow_increment.sfc_data.tile*.nc
-│   └── [other output files]
-├── ori/
-│   ├── DA/jedi_anl/
-│   │   └── [same structure as above]
-│   └── ...
-├── rejectA/
-└── rejectB/
-```
-
-### Mask Files
-
-Mask files must be located in the directory specified by `mask_dir`:
-
-```
-{mask_dir}/
-├── C384_hr3_mx025_era5_input.mat
-├── C768_hr3_mx025_era5_input.mat
-├── C1152_hr3_mx025_era5_input.mat
-└── [shapefile data for map overlays]
-```
-
-**Mask file contents**:
-- `C{res}_lat1D`, `C{res}_lon1D`: 1D coordinate arrays
-- `C{res}_lat2D_FULL`, `C{res}_lon2D_FULL`: 2D coordinate arrays per tile
-- Land fraction masks
-
-## Common Workflow
-
-### Quick Start Example
-
-```matlab
-% 1. Set configuration
-edit config_inputs.m    % Adjust paths, dates, experiments
-
-% 2. Run diagnostic analysis
-run('Analyze_diag.m')   % Outputs: Images_diag_analysis/*.jpg
-
-% 3. Run increment analysis
-run('Analyze_incr.m')   % Outputs: snodl_increment_comparison_*.gif
-
-% 4. Run full evaluations (optional, more computationally intensive)
-run('Evaluate_snow_depth.m')
-run('Evaluate_scf.m')
-```
-
-### Troubleshooting
-
-**Error: "Mask file does not exist"**
-- Check that `mask_dir` path in `config_inputs.m` is correct
-- Verify mask files exist at the specified location
-
-**Error: "Invalid resolution"**
-- Ensure `res` is one of: 384, 768, or 1152
-- Check that mask file matches the specified resolution
-
-**Error: "No data found for date"**
-- Verify `start_date` and `finish_date` are valid
-- Confirm experiment directories exist in the offline workflow output path
-- Check that diagnostic/increment files follow the expected naming convention
-
-**Out of memory errors**
-- Reduce time range (`finish_date - start_date`)
-- Decrease `eval_output_step` (fewer dates)
-- Reduce grid resolution if possible
-
-**Missing shapefiles for maps**
-- Download NOAA Natural Earth or USGS shapefiles
-- Place in `mask_dir`
-- Required files: `landareas.shp`, `intl_boundaries.shp`, `usastatelo.shp`
-
-## Algorithm Notes
-
-### Double Averaging (Analyze_diag.m)
-
-1. **Level 1**: Average by unique (lat, lon) pairs (handles repeated observations)
-2. **Level 2**: Map observations to nearest model grid cell using KD-tree
-3. **Level 3**: Average values within grid cells
-
-This approach ensures proper weighting of observations with multiple measurements at the same location.
-
-### QC Filtering
-
-- **Before QC**: All observations (EffectiveQC0 and EffectiveQC1 may not be applied)
-- **After QC**: Only observations passing both QC0==0 and QC1==0 checks
-
-### Blue-to-Red Colormap (Analyze_incr.m)
-
-- **Blue**: Negative values (analysis reducing snow depth)
-- **White**: Zero (no change)
-- **Red**: Positive values (analysis increasing snow depth)
-- Symmetric scaling around zero for balanced visualization
-
-## Development Notes
-
-**Code Quality**:
-- Code assisted by Gemini and GitHub Copilot
-- All code reviewed, edited, and validated by NWS staff
-- Extensive error checking and validation
-
-**Future Enhancements**:
-- Uncertainty quantification
-- Multi-variable evaluation (soil moisture, temperature, etc.)
-- Real-time monitoring capabilities
-- Database storage of evaluation metrics
-
-## Citation & Attribution
-
-This package was developed for the NOAA National Weather Service land data assimilation workflow. 
-
-**Authors**:
-- Yuan Xue (NOAA/NWS)
-- Assisted by Gemini and GitHub Copilot
-
-## License
-
-See repository LICENSE file.
-
 ## Support & Questions
 
 For questions or issues:
-1. Check the troubleshooting section above
-2. Review diagnostic output in MATLAB console
-3. Contact the package maintainer (Yuan Xue)
+1. Review diagnostic output in MATLAB console
+2. Contact the package maintainer (Yuan Xue)
 
 ---
 
