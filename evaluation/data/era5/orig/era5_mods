@@ -1,2 +1,0 @@
-module load intelpython/2023.2.0
-pip install cdsapi
