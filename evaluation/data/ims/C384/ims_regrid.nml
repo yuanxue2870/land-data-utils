@@ -1,0 +1,8 @@
+&ims_regrid_nml
+ obs_source="IMS4km"
+ fv3_grid="C384"
+ land_static_filename="/scratch2/NCEPDEV/land/data/forcing/era5/static/C384/ufs-land_C384_hr3_static_fields.nc"
+ regrid_filepath="/scratch2/NCEPDEV/land/data/evaluation/IMS/fix_20231027/land_mapping/"
+ ims_filepath="/scratch2/NCEPDEV/land/data/DA/snow_ice_cover/IMS/"
+ regrid_outpath="/scratch2/NCEPDEV/land/data/evaluation/IMS/"
+/

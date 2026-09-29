@@ -1,0 +1,8 @@
+&ims_regrid_nml
+ obs_source="IMS1km"
+ fv3_grid="C192"
+ land_static_filename="/scratch4/NCEPDEV/land/data/ufs-land-driver/vector_inputs/C192.mx025/ufs-land_C192.mx025_static_fields.nc"
+ regrid_filepath="/scratch4/NCEPDEV/stmp/Yuan.Xue/land-data-utils/evaluation/data/ims/land_mapping_openMP/"
+ ims_filepath="/scratch4/NCEPDEV/land/data/DA/IMS/netcdf/"
+ regrid_outpath="/scratch4/NCEPDEV/stmp/Yuan.Xue/land-data-utils/evaluation/data/ims/C192/output/"
+/

@@ -1,0 +1,4 @@
+&land_mapping_nml
+ims_regrid_filename="/scratch4/NCEPDEV/stmp/Yuan.Xue/land-data-utils/evaluation/data/ims/fv3_mapping/IMS1km_to_FV3_mapping.C1152.mx025_oro_data.nc"
+land_static_filename="/scratch4/NCEPDEV/land/data/ufs-land-driver/vector_inputs/C1152.mx025/ufs-land_C1152.mx025_static_fields.nc"
+output_filename="/scratch4/NCEPDEV/stmp/Yuan.Xue/land-data-utils/evaluation/data/ims/land_mapping_openMP/IMS1km_to_land_mapping.C1152.nc"

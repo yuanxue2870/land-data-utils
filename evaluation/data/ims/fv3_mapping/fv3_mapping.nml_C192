@@ -1,0 +1,13 @@
+&fv3_mapping_nml
+ tile_dim=192
+ otype="C192.mx025_oro_data"
+ orog_path="/scratch3/NCEPDEV/global/role.glopara/fix/orog/20240917/C192/"
+ tile_path="/scratch3/NCEPDEV/global/role.glopara/fix/orog/20240917/C192/"
+ obs_source="IMS1km"
+ source_i_size=24576
+ source_j_size=24576
+ ims_path="/scratch4/NCEPDEV/land/data/evaluation/IMS/fix_coords/"
+ ims_lat_name="imslat_1km_8bytes.bin"
+ ims_lon_name="imslon_1km_8bytes.bin"
+ out_path="./"
+/

@@ -1,0 +1,5 @@
+&land_mapping_nml
+ ims_regrid_filename="/scratch4/NCEPDEV/land/data/evaluation/IMS/fix_20241027/index_files/IMS4km_to_FV3_mapping.C96.mx100_oro_data.nc"
+ land_static_filename="/scratch2/NCEPDEV/land/data/forcing/era5/static/C96/ufs-land_C96_hr3_static_fields.nc"
+output_filename="/scratch2/NCEPDEV/land/data/evaluation/IMS/fix_20231027/land_mapping/IMS4km_to_land_mapping.C96.nc"
+/
